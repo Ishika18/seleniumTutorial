@@ -1,11 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
-driver = webdriver.Chrome('./chromedriver')
+chrome_driver_path = "./chromedriver"
 
+# create a Service object for the ChromeDriver
+service = Service(chrome_driver_path)
+
+# start the ChromeDriver service
+service.start()
+
+# create a Chrome web driver with the Service object
+driver = webdriver.Chrome(service=service)
 
 website_url = "https://www.linkedin.com/jobs/search"
-
 
 def scrape_linkedin_jobs():
     # ------------------- Step 1 -----------------------
